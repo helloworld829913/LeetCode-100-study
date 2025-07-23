@@ -53,4 +53,41 @@ public class InvertBT {
         return root;
     }
 
+    public static void main(String[] args) {
+        // 构建一个简单的二叉树进行测试:
+        //       4
+        //      / \
+        //     2   7
+        //    / \ / \
+        //   1  3 6  9
+        TreeNode root = new TreeNode(4);
+        root.left = new TreeNode(2);
+        root.right = new TreeNode(7);
+        root.left.left = new TreeNode(1);
+        root.left.right = new TreeNode(3);
+        root.right.left = new TreeNode(6);
+        root.right.right = new TreeNode(9);
+
+        System.out.println("原始二叉树:");
+        printTree(root); // 打印原始树
+
+        // 调用翻转函数
+        InvertBT solution = new InvertBT();
+        TreeNode invertedRoot = solution.invertTree(root); // 可以换成 invertTree1 测试广度优先版本
+
+        System.out.println("\n翻转后的二叉树:");
+        printTree(invertedRoot); // 打印翻转后的树
+    }
+
+    /**
+     * 前序遍历打印二叉树
+     */
+    public static void printTree(TreeNode root) {
+        if (root != null) {
+            System.out.print(root.val + " ");
+            printTree(root.left);
+            printTree(root.right);
+        }
+    }
+
 }
