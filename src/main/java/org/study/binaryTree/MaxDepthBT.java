@@ -5,7 +5,25 @@ import java.util.Queue;
 
 public class MaxDepthBT {
 
+
+    /**
+     * 求二叉树最大深度
+     * 深度优先
+     */
     public int maxDepth(TreeNode root) {
+        if (root == null) {
+            return 0;
+        } else {
+            int leftHeight = maxDepth(root.left);
+            int rightHeight = maxDepth(root.right);
+            return Math.max(leftHeight, rightHeight) + 1;
+        }
+    }
+
+    /**
+     * 广度优先
+     */
+    public int maxDepth1(TreeNode root) {
         if (root == null) {
             return 0;
         }
